@@ -2,7 +2,7 @@
 
 ## Description
 
-This project was done in order to gain practice with and display skills in JavaScript, such as function calls. The created website
+This project was done in order to gain practice with and display skills in JavaScript. The created website
 acts as a password generator, taking desired password length and character sets as input from the user. This project allowed me to 
 practice using Window methods, such as prompt() and confirm(), and creating functions.
 
