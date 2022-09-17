@@ -47,13 +47,13 @@ function gen_random_num(min, max) {
   return result;
 }
 
-// Helper function that finds out how chars they want a password to have
+// Helper function that finds out how many chars a password should have
 function how_many_chars() {
-  return parseInt(prompt("How many characters long will your password be? (If you type 0 or less or a non-number it will default to 10)"));
+  return parseInt(prompt("How many characters long will your password be? (If you type a number less than 8 or greater than 128 or a non-number it will default to 8)"));
 }
 
 // Helper function that finds out which char sets the user wants to use
-// Not exactly the most scalable method, but we aren't worrying about other variouschar sets right now
+// Not exactly the most scalable method, but we aren't worrying about other various char sets right now
   // ^ Possible fix to this could be making an array called somithing like 'char_set_confirm_statment'
   // and have a for loop go over the current setup with:
   // user_char_set[i] = confirm(char_set_confirm_statment[i]);
@@ -67,14 +67,15 @@ function check_char_set() {
   use_char_set[3] = confirm("Do you want non-letter and non-numeric characters (ie: !, @, #, etc.) in your password?");
 }
 
-// Use gen_random_num to give a random index of char to check and an char to pull from a char_set
-// Use while-loop to check if a the selected char index is valid to use, rerolling if a miss occurs
+// This function generates a password of a specificed length using specifcied character sets. Makes use of
+// the how_many_chars, check_char_set, and gen_random_num helper functions. Sets password length to 8 if a
+// non-number value or a number less than 8 or greater than 128 is given.
 function generatePassword() {
   max_password_length = how_many_chars();
   check_char_set();
   var password_holder = "";
-  if(isNaN(max_password_length) || max_password_length <= 0) {
-    max_password_length = 10;
+  if(isNaN(max_password_length) || max_password_length <  8 || max_password_length > 128) {
+    max_password_length = 8;
   }
 
   for(var i = 0; i < max_password_length; i++) {
